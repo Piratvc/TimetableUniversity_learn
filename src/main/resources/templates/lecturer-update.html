@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Редактирование преподавателя</title>
+</head>
+<body>
+<form action="#" th:action="@{/lecturer-update}" th:object="${lecturer}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="name">Имя преподавателя</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Имя преподавателя вписать сюда">
+    <br/>
+
+    <input type="submit" value="Обновить информацию">
+</form>
+</body>
+</html>

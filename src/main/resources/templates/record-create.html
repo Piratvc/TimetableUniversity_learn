@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание записи об уроке</title>
+</head>
+<body>
+<form action="#" th:action="@{/record-create}" th:object="${recordLesson}" method="post">
+    <label for="cabinet">id кабинета</label>
+    <input type="text" th:field="*{cabinet}" id="cabinet" placeholder="Кабинет id">
+    <a th:href="@{cabinets}">Посмотреть id кабинета</a>
+    <br/>
+    <label for="groups">id группа</label>
+    <input type="text" th:field="*{groups}" id="groups" placeholder="id группы">
+    <a th:href="@{groups}">Посмотреть id групп</a>
+    <br/>
+    <label for="lecturer">id препода</label>
+    <input type="text" th:field="*{lecturer}" id="lecturer" placeholder="id препода">
+    <a th:href="@{lecturers}">Посмотреть id преподавателей</a>
+    <br/>
+    <label for="lesson">id урока</label>
+    <input type="text" th:field="*{lesson}" id="lesson" placeholder="id урока">
+    <a th:href="@{lessons}">Посмотреть id предметов</a>
+    <br/>
+    <label for="time">Дата</label>
+    <input type="date" th:field="*{time}" id="time">
+    </br>
+    <input type="submit" value="Добавить запись">
+</form>
+</body>
+</html>

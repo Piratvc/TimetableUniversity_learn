@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Изменение записи об уроке</title>
+</head>
+<body>
+<form action="#" th:action="@{/record-update}" th:object="${record}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="cabinet">id кабинета</label>
+    <input type="text" th:field="*{cabinet}" id="cabinet" placeholder="Кабинет id">
+    <a href="/cabinets">Посмотреть id кабинета</a>
+    <br/>
+    <label for="groups">id группа</label>
+    <input type="text" th:field="*{groups}" id="groups" placeholder="id группы">
+    <a href="/groups">Посмотреть id групп</a>
+    <br/>
+    <label for="lecturer">id препода</label>
+    <input type="text" th:field="*{lecturer}" id="lecturer" placeholder="id препода">
+    <a href="/lecturers">Посмотреть id преподавателей</a>
+    <br/>
+    <label for="lesson">id урока</label>
+    <input type="text" th:field="*{lesson}" id="lesson" placeholder="id урока">
+    <a href="/lessons">Посмотреть id предметов</a>
+    <br/>
+    <label for="time">Дата</label>
+    <input type="date" th:field="*{time}" id="time">
+    </br>
+    <input type="submit" value="Изменить запись">
+</form>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание кабинета</title>
+</head>
+<body>
+<form action="#" th:action="@{/cabinet-create}" th:object="${cabinet}" method="post">
+    <label for="title">Название кабинета</label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Название кабинета вписать сюда">
+    <br/>
+    <label for="cabinetNumber">Номер кабинета</label>
+    <input type="number" th:field="*{cabinetNumber}" id="cabinetNumber" placeholder="Номер кабинета вписать сюда">
+    <br/>
+    <input type="submit" value="Добавить кабинет">
+</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Расписание на дату</title>
+</head>
+<body>
+<div th:switch="${records}">
+    <h2 th:case="null">Нет записей об уроках</h2>
+    <div th:case="*">
+        <h2>Ваши занятия на эту дату</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Кабинет</th>
+                <th>Группы</th>
+                <th>Преподаватель</th>
+                <th>Урок</th>
+                <th>Дата</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="record : ${records}">
+                <td th:text="${record.id}"></td>
+                <td th:text="${record.cabinet}"></td>
+                <td th:text="${record.groups}"></td>
+                <td th:text="${record.lecturer}"></td>
+                <td th:text="${record.lesson}"></td>
+                <td th:text="${record.time}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

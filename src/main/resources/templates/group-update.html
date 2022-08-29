@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Редактирование группы/курса</title>
+</head>
+<body>
+<form action="#" th:action="@{/group-update}" th:object="${group}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="numberCource">Номер курса</label>
+    <input type="number" th:field="*{numberCource}" id="numberCource" placeholder="Номер курса вписать сюда">
+    <br/>
+    <label for="numberGroup">Номер группы</label>
+    <input type="number" th:field="*{numberGroup}" id="numberGroup" placeholder="Номер группы вписать сюда">
+    <br/>
+
+    <input type="submit" value="Редактировать группу/курс">
+</form>
+</body>
+</html>

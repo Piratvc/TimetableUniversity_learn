@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание преподавателя</title>
+</head>
+<body>
+<form action="#" th:action="@{/lecturer-create}" th:object="${lecturer}" method="post">
+    <label for="name">Имя преподавателя</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Имя преподавателя вписать сюда">
+    <br/>
+    <input type="submit" value="Добавить преподавателя">
+</form>
+</body>
+</html>

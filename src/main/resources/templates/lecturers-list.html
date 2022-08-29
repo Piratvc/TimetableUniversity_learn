@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Преподаватели</title>
+</head>
+<body>
+<div th:switch="${lecturers}">
+    <h2 th:case="null">Список препоавателей не найден</h2>
+    <div th:case="*">
+        <h2>Преподаватели</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Имя преподавателя</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lecturer : ${lecturers}">
+                <td th:text="${lecturer.id}"></td>
+                <td th:text="${lecturer.name}"></td>
+                <td><a th:href="@{lecturer-update/{id}(id=${lecturer.id})}">Редактировать</a></td>
+                <td><a th:href="@{lecturer-delete/{id}(id=${lecturer.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/lecturer-create">Добавить преподавателя</a></p>
+</div>
+</body>
+</html>

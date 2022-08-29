@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="UTF-8">
+<title>Редактирование кабинета</title>
+</head>
+<body>
+<form action="#" th:action="@{/cabinet-update}" th:object="${cabinet}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="title">Название</label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Название кабинета">
+    <br/>
+    <label for="cabinetNumber">Группа/Курс</label>
+    <input type="number" th:field="*{cabinetNumber}" id="cabinetNumber" placeholder="номер кабинета">
+    <br/>
+
+    <input type="submit" value="Update Cabinet">
+</form>
+</body>
+</html>

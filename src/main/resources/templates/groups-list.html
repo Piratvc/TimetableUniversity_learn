@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Группы/курсы</title>
+</head>
+<body>
+<div th:switch="${groups}">
+    <h2 th:case="null">Группы/курсы не найдены</h2>
+    <div th:case="*">
+        <h2>Группы/курсы</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Курс</th>
+                <th>Группа</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="group : ${groups}">
+                <td th:text="${group.id}"></td>
+                <td th:text="${group.numberCource}"></td>
+                <td th:text="${group.numberGroup}"></td>
+                <td><a th:href="@{group-update/{id}(id=${group.id})}">Редактировать</a></td>
+                <td><a th:href="@{group-delete/{id}(id=${group.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/group-create">Добавить Группу/курс</a></p>
+</div>
+</body>
+</html>

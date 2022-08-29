@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Уроки</title>
+</head>
+<body>
+<div th:switch="${lessons}">
+    <h2 th:case="null">таблица уроков не найдена</h2>
+    <div th:case="*">
+        <h2>Уроки</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название предмета</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lesson : ${lessons}">
+                <td th:text="${lesson.id}"></td>
+                <td th:text="${lesson.title}"></td>
+                <td><a th:href="@{lesson-update/{id}(id=${lesson.id})}">Редактировать</a></td>
+                <td><a th:href="@{lesson-delete/{id}(id=${lesson.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/lesson-create">Добавить урок</a></p>
+</div>
+</body>
+</html>

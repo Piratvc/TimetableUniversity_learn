@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<style>
+body {
+  font-family: arial, sans-serif;
+  font-size: 1em;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #FFEFD5;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Кабинеты</title>
+</head>
+<body>
+<div th:switch="${cabinets}">
+    <h2 th:case="null">Кабинеты не найдены</h2>
+    <div th:case="*">
+        <h2>Кабинеты</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Название кабинета</th>
+                <th>Номер</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cabinet : ${cabinets}">
+                <td th:text="${cabinet.id}"></td>
+                <td th:text="${cabinet.title}"></td>
+                <td th:text="${cabinet.cabinetNumber}"></td>
+                <td><a th:href="@{cabinet-update/{id}(id=${cabinet.id})}">Редактировать</a></td>
+                <td><a th:href="@{cabinet-delete/{id}(id=${cabinet.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/cabinet-create">Добавить кабинет</a></p>
+</div>
+</body>
+</html>
