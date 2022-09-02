@@ -8,8 +8,9 @@ import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -36,7 +37,7 @@ class ServicesTest {
         recordLesson.setLecturer(lecturerService.findById(1L));
         recordLesson.setLesson(lessonService.findById(1L));
         recordLesson.setCabinet(cabinetService.findById(1L));
-        List<Group> groupList = new ArrayList<>();
+        HashSet<Group> groupList = new HashSet<>();
         groupList.add(groupService.findById(1L));
         recordLesson.setGroups(groupList);
         recordLesson.setTime(Date.valueOf("2022-08-12"));

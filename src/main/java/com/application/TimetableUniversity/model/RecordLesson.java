@@ -5,10 +5,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.Hibernate;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
-
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -29,8 +27,7 @@ public class RecordLesson {
             name = "groups_recordslessons",
             joinColumns = @JoinColumn(name = "recordslessons_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private List<Group> groups = new ArrayList<>();
-
+    private HashSet<Group> groups = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "lecturername_fk")
