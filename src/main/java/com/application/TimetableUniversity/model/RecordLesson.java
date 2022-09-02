@@ -7,6 +7,8 @@ import org.hibernate.Hibernate;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
@@ -27,7 +29,7 @@ public class RecordLesson {
             name = "groups_recordslessons",
             joinColumns = @JoinColumn(name = "recordslessons_id"),
             inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private HashSet<Group> groups = new HashSet<>();
+    private Set<Group> groups = new HashSet<>();
 
     @ManyToOne
     @JoinColumn(name = "lecturername_fk")
