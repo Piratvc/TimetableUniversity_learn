@@ -1,7 +1,6 @@
 package com.application.TimetableUniversity.service;
 import com.application.TimetableUniversity.model.RecordLesson;
 import com.application.TimetableUniversity.model.Student;
-import com.application.TimetableUniversity.repository.GroupRepository;
 import com.application.TimetableUniversity.repository.RecordsLessonRepository;
 import com.application.TimetableUniversity.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class RecordsService {
     private final StudentRepository studentRepository;
 
     @Autowired
-    public RecordsService(RecordsLessonRepository recordsLessonRepository, GroupRepository groupRepository, StudentRepository studentRepository) {
+    public RecordsService(RecordsLessonRepository recordsLessonRepository, StudentRepository studentRepository) {
         this.recordsLessonRepository = recordsLessonRepository;
         this.studentRepository = studentRepository;
     }
