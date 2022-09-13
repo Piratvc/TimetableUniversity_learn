@@ -1,7 +1,6 @@
 package com.application.TimetableUniversity.controller;
 import com.application.TimetableUniversity.model.Student;
 import com.application.TimetableUniversity.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +11,9 @@ import java.util.List;
 @Controller
 public class StudentController {
     private final StudentService studentService;
-
-    @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-
     @GetMapping("/students")
     public String findAll(Model model) {
         List<Student> students = studentService.findAll();

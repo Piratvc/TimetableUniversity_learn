@@ -1,7 +1,6 @@
 package com.application.TimetableUniversity.controller;
 import com.application.TimetableUniversity.model.RecordLesson;
 import com.application.TimetableUniversity.service.RecordsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +14,9 @@ import java.util.List;
 @Controller
 public class RecordLessonController {
     private final RecordsService recordsService;
-
-    @Autowired
     public RecordLessonController(RecordsService recordsService) {
         this.recordsService = recordsService;
     }
-
     @GetMapping("/records")
     public String findAll(Model model) {
         List<RecordLesson> records = recordsService.findAll();

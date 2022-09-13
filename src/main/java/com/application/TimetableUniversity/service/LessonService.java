@@ -1,17 +1,12 @@
 package com.application.TimetableUniversity.service;
-
 import com.application.TimetableUniversity.model.Lesson;
 import com.application.TimetableUniversity.repository.LessonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
 public class LessonService {
     private final LessonRepository lessonRepository;
-
-    @Autowired
     public LessonService(LessonRepository lessonRepository) {
         this.lessonRepository = lessonRepository;
     }
