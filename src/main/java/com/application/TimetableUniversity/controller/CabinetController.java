@@ -1,6 +1,7 @@
 package com.application.TimetableUniversity.controller;
 import com.application.TimetableUniversity.model.Cabinet;
 import com.application.TimetableUniversity.service.CabinetService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,9 @@ import java.util.List;
 
 @Controller
 public class CabinetController {
+
     private final CabinetService cabinetService;
+    @Autowired
     public CabinetController(CabinetService cabinetService) {
         this.cabinetService = cabinetService;
     }

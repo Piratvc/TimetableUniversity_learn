@@ -1,6 +1,7 @@
 package com.application.TimetableUniversity.controller;
 import com.application.TimetableUniversity.model.RecordLesson;
 import com.application.TimetableUniversity.service.RecordsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Controller
 public class RecordLessonController {
+    @Autowired
     private final RecordsService recordsService;
     public RecordLessonController(RecordsService recordsService) {
         this.recordsService = recordsService;

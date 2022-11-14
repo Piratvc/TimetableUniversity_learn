@@ -1,6 +1,7 @@
 package com.application.TimetableUniversity.controller;
 import com.application.TimetableUniversity.model.Group;
 import com.application.TimetableUniversity.service.GroupService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 @Controller
 public class GroupController {
+    @Autowired
     private final GroupService groupService;
     public GroupController(GroupService groupService) {
         this.groupService = groupService;

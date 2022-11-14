@@ -38,7 +38,7 @@ tr:nth-child(even) {
             <tbody>
             <tr th:each="lecturer : ${lecturers}">
                 <td th:text="${lecturer.id}"></td>
-                <td th:text="${lecturer.name}"></td>
+                <td th:text="${lecturer.user}"></td>
                 <td><a th:href="@{lecturer-update/{id}(id=${lecturer.id})}">Редактировать</a></td>
                 <td><a th:href="@{lecturer-delete/{id}(id=${lecturer.id})}">Удалить</a></td>
             </tr>

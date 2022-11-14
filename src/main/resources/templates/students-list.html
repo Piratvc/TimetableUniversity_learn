@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <style>
 body {
   font-family: arial, sans-serif;
@@ -24,7 +25,7 @@ tr:nth-child(even) {
     <title>Студенты</title>
 </head>
 <body>
-<div th:switch="${students}">
+<div sec:authorize="ROLE_ADMIN" th:switch="${students}">
     <h2 th:case="null">No students found!</h2>
     <div th:case="*">
         <h2>Студенты</h2>
@@ -39,7 +40,7 @@ tr:nth-child(even) {
             <tbody>
             <tr th:each="student : ${students}">
                 <td th:text="${student.id}"></td>
-                <td th:text="${student.name}"></td>
+                <td th:text="${student.user}"></td>
                 <td th:text="${student.groupFk}"></td>
                 <td><a th:href="@{records/{id}/(id=${student.id})}">Расписание</a></td>
                 <td><a th:href="@{student-update/{id}(id=${student.id})}">Редактировать</a></td>

@@ -5,10 +5,10 @@
     <title>Создать студента</title>
 </head>
 <body>
-<form action="#" th:action="@{/student-create}" th:object="${student}" method="post">
+<form action="#" th:action="@{/student-create}" th:object="${students}" method="post">
 
-    <label for="name">Имя</label>
-    <input type="text" th:field="*{name}" id="name" placeholder="Имя впиать сюда">
+    <label for="student.id">Имя</label>
+    <input type="text" th:field="*{student.id}" id="student.id" placeholder="Имя впиать сюда">
     <br/>
     <label for="groupFk">id группы/курса</label>
     <input type="text" th:field="*{groupFk}" id="groupFk" placeholder="id группы впишите сюда">

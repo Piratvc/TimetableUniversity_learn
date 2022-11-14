@@ -3,14 +3,16 @@ import com.application.TimetableUniversity.model.RecordLesson;
 import com.application.TimetableUniversity.model.Student;
 import com.application.TimetableUniversity.repository.RecordsLessonRepository;
 import com.application.TimetableUniversity.repository.StudentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
 @Service
 public class RecordsService {
-
+    @Autowired
     private final RecordsLessonRepository recordsLessonRepository;
+    @Autowired
     private final StudentRepository studentRepository;
     public RecordsService(RecordsLessonRepository recordsLessonRepository, StudentRepository studentRepository) {
         this.recordsLessonRepository = recordsLessonRepository;

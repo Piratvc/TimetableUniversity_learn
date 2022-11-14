@@ -1,10 +1,12 @@
 package com.application.TimetableUniversity.service;
 import com.application.TimetableUniversity.model.Group;
 import com.application.TimetableUniversity.repository.GroupRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class GroupService {
+    @Autowired
     private final GroupRepository groupRepository;
     public GroupService(GroupRepository groupRepository) {
         this.groupRepository = groupRepository;

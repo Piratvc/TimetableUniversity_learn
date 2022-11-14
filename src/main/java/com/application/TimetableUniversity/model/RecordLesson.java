@@ -1,12 +1,10 @@
 package com.application.TimetableUniversity.model;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.Hibernate;
+import javax.persistence.*;
+import java.util.Objects;
 import java.sql.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 @Getter
@@ -15,7 +13,6 @@ import java.util.Set;
 @Entity
 @Table(name = "recordslessons")
 public class RecordLesson {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

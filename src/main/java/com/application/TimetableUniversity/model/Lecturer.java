@@ -1,37 +1,36 @@
 package com.application.TimetableUniversity.model;
-import jakarta.persistence.*;
+
 import lombok.*;
 import org.hibernate.Hibernate;
+
+import javax.persistence.*;
 import java.util.Objects;
 
+
+@Entity
 @Getter
 @Setter
 @RequiredArgsConstructor
-@Entity
 @Table(name = "lecturers")
 public class Lecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne
+    @JoinColumn(name = "name_id_fk")
+    private User user;
+
     @Override
     public String toString() {
-        return     name;
+        return user.getName();
     }
-
-    @Column(name = "name")
-    private String name;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Lecturer lecturer = (Lecturer) o;
-        return id != null && Objects.equals(id, lecturer.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
+        return getId() != null && Objects.equals(getId(), lecturer.getId());
     }
 }

@@ -1,11 +1,13 @@
 package com.application.TimetableUniversity.service;
 import com.application.TimetableUniversity.model.Cabinet;
 import com.application.TimetableUniversity.repository.CabinetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
 public class CabinetService {
+    @Autowired
     private final CabinetRepository cabinetRepository;
     public CabinetService(CabinetRepository cabinetRepository) {
         this.cabinetRepository = cabinetRepository;
