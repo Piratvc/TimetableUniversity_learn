@@ -1,7 +1,11 @@
 package com.application.TimetableUniversity.model;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
-import javax.persistence.*;
+
+//import org.springframework.data.annotation.Id;
+
+//import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 

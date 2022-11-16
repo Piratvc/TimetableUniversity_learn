@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <style>
 body {
   font-family: arial, sans-serif;
@@ -18,6 +20,10 @@ td, th {
 tr:nth-child(even) {
   background-color: #FFEFD5;
 }
+
+
+
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -31,7 +37,9 @@ tr:nth-child(even) {
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <th>Id</th>
+                </div>
                 <th>Кабинет</th>
                 <th>Группы</th>
                 <th>Преподаватель</th>
@@ -41,19 +49,25 @@ tr:nth-child(even) {
             </thead>
             <tbody>
             <tr th:each="record : ${records}">
-                <td th:text="${record.id}"></td>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <td th:text="${record.id}"></td>
+                </div>
                 <td th:text="${record.cabinet}"></td>
                 <td th:text="${record.groups}"></td>
                 <td th:text="${record.lecturer}"></td>
                 <td th:text="${record.lesson}"></td>
                 <td th:text="${record.time}"></td>
-                <td><a th:href="@{record-update/{id}(id=${record.id})}">Редактировать</a></td>
-                <td><a th:href="@{record-delete/{id}(id=${record.id})}">Удалить</a></td>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <td><a th:href="@{record-update/{id}(id=${record.id})}">Редактировать</a></td>
+                    <td><a th:href="@{record-delete/{id}(id=${record.id})}">Удалить</a></td>
+                </div>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/record-create">Добавить запись</a></p>
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <p><a href="/record-create">Добавить запись</a></p>
+    </div>
 </div>
 </body>
 </html>

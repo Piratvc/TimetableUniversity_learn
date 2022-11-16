@@ -1,7 +1,8 @@
 package com.application.TimetableUniversity.model;
 import lombok.*;
 import org.hibernate.Hibernate;
-import javax.persistence.*;
+//import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Objects;
 import java.sql.Date;
 import java.util.HashSet;

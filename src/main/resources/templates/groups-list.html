@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <style>
 body {
   font-family: arial, sans-serif;
@@ -18,6 +20,7 @@ td, th {
 tr:nth-child(even) {
   background-color: #FFEFD5;
 }
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -31,23 +34,31 @@ tr:nth-child(even) {
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <th>Id</th>
+                </div>
                 <th>Курс</th>
                 <th>Группа</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="group : ${groups}">
-                <td th:text="${group.id}"></td>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <td th:text="${group.id}"></td>
+                </div>
                 <td th:text="${group.numberCource}"></td>
                 <td th:text="${group.numberGroup}"></td>
-                <td><a th:href="@{group-update/{id}(id=${group.id})}">Редактировать</a></td>
-                <td><a th:href="@{group-delete/{id}(id=${group.id})}">Удалить</a></td>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <td><a th:href="@{group-update/{id}(id=${group.id})}">Редактировать</a></td>
+                    <td><a th:href="@{group-delete/{id}(id=${group.id})}">Удалить</a></td>
+                </div>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/group-create">Добавить Группу/курс</a></p>
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <p><a href="/group-create">Добавить Группу/курс</a></p>
+    </div>
 </div>
 </body>
 </html>

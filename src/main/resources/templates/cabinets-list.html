@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <style>
 body {
   font-family: arial, sans-serif;
@@ -18,6 +20,8 @@ td, th {
 tr:nth-child(even) {
   background-color: #FFEFD5;
 }
+
+
 </style>
 <head>
     <meta charset="UTF-8">
@@ -31,23 +35,31 @@ tr:nth-child(even) {
         <table>
             <thead>
             <tr>
-                <th>Id</th>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <th>Id</th>
+                </div>
                 <th>Название кабинета</th>
                 <th>Номер</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="cabinet : ${cabinets}">
-                <td th:text="${cabinet.id}"></td>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <td th:text="${cabinet.id}"></td>
+                </div>
                 <td th:text="${cabinet.title}"></td>
                 <td th:text="${cabinet.cabinetNumber}"></td>
-                <td><a th:href="@{cabinet-update/{id}(id=${cabinet.id})}">Редактировать</a></td>
-                <td><a th:href="@{cabinet-delete/{id}(id=${cabinet.id})}">Удалить</a></td>
+                <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+                    <td><a th:href="@{cabinet-update/{id}(id=${cabinet.id})}">Редактировать</a></td>
+                    <td><a th:href="@{cabinet-delete/{id}(id=${cabinet.id})}">Удалить</a></td>
+                </div>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/cabinet-create">Добавить кабинет</a></p>
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')">
+        <p><a href="/cabinet-create">Добавить кабинет</a></p>
+    </div>
 </div>
 </body>
 </html>

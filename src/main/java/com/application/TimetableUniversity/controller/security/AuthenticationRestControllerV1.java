@@ -4,6 +4,8 @@ import com.application.TimetableUniversity.model.User;
 import com.application.TimetableUniversity.security.JwtUserDetailsService;
 import com.application.TimetableUniversity.security.jwt.JwtTokenProvider;
 import com.application.TimetableUniversity.service.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,8 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.Cookie;
+//import javax.servlet.http.HttpServletResponse;
 
 
 @Controller
