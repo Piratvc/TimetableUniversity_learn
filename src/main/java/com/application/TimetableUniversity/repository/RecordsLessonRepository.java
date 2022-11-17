@@ -1,6 +1,5 @@
 package com.application.TimetableUniversity.repository;
 import com.application.TimetableUniversity.model.Group;
-import com.application.TimetableUniversity.model.Lecturer;
 import com.application.TimetableUniversity.model.RecordLesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

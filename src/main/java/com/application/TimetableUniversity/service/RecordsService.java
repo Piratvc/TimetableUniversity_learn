@@ -1,8 +1,6 @@
 package com.application.TimetableUniversity.service;
-import com.application.TimetableUniversity.model.Lecturer;
 import com.application.TimetableUniversity.model.RecordLesson;
 import com.application.TimetableUniversity.model.Student;
-import com.application.TimetableUniversity.repository.LecturerRepository;
 import com.application.TimetableUniversity.repository.RecordsLessonRepository;
 import com.application.TimetableUniversity.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +14,11 @@ public class RecordsService {
     private final RecordsLessonRepository recordsLessonRepository;
     @Autowired
     private final StudentRepository studentRepository;
-    @Autowired
-    private final LecturerRepository lecturerRepository;
-    public RecordsService(RecordsLessonRepository recordsLessonRepository, StudentRepository studentRepository, LecturerRepository lecturerRepository) {
+
+    public RecordsService(RecordsLessonRepository recordsLessonRepository, StudentRepository studentRepository) {
         this.recordsLessonRepository = recordsLessonRepository;
         this.studentRepository = studentRepository;
-        this.lecturerRepository = lecturerRepository;
     }
-
     public RecordLesson findById(Long id) {
         return recordsLessonRepository.getReferenceById(id);
     }
