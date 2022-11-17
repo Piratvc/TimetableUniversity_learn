@@ -56,7 +56,7 @@ public class RecordLessonController {
         return "redirect:/records";
     }
 
-    @GetMapping("/records/{id}/{date}")
+    @GetMapping("/records/student-{id}/{date}")
     public String findRecordsByStudentIdAndDate(@PathVariable("id") Long id, @PathVariable("date") String stringTime, Model model) throws ParseException {
         Date time = new SimpleDateFormat("yyyy-MM-dd").parse(stringTime);
         List<RecordLesson> records = recordsService.getRecordsLessonByStudentIdAndDate(id, time);
@@ -64,9 +64,24 @@ public class RecordLessonController {
         return "records-personal-date";
     }
 
-    @GetMapping("/records/{id}/")
+    @GetMapping("/records/student-{id}/")
     public String findRecordsByStudentId(@PathVariable("id") Long id, Model model) {
         List<RecordLesson> records = recordsService.getRecordsLessonByStudentId(id);
+        model.addAttribute("records", records);
+        return "records-personal";
+    }
+
+    @GetMapping("/records/lecturer-{id}/{date}")
+    public String findRecordsByLecturerIdAndDate(@PathVariable("id") Long id, @PathVariable("date") String stringTime, Model model) throws ParseException {
+        Date time = new SimpleDateFormat("yyyy-MM-dd").parse(stringTime);
+        List<RecordLesson> records = recordsService.getRecordsLessonByLecturerIdAndDate(id, time);
+        model.addAttribute("records", records);
+        return "records-personal-date";
+    }
+
+    @GetMapping("/records/lecturer-{id}/")
+    public String findRecordsByLecturerId(@PathVariable("id") Long id, Model model) {
+        List<RecordLesson> records = recordsService.getRecordsLessonByLecturerId(id);
         model.addAttribute("records", records);
         return "records-personal";
     }

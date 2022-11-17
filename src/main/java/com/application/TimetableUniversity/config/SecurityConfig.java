@@ -1,5 +1,4 @@
 package com.application.TimetableUniversity.config;
-
 import com.application.TimetableUniversity.security.jwt.JwtConfigurer;
 import com.application.TimetableUniversity.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
-import org.thymeleaf.spring6.SpringTemplateEngine;
+
 
 
 @Configuration
@@ -35,17 +33,11 @@ public class SecurityConfig {
         return http
                 .httpBasic().disable()
                 .csrf().disable()
-//                .authorizeRequests()
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(LOGIN_ENDPOINT).permitAll()
                         .requestMatchers("/**").hasRole("USER")
                         .requestMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
                         .anyRequest().authenticated())
-//                .antMatchers(LOGIN_ENDPOINT).permitAll()
-//                .antMatchers("/**").hasRole("USER")
-//                .antMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
-//                .anyRequest().authenticated()
-//                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and()
@@ -54,7 +46,5 @@ public class SecurityConfig {
                 .and()
                 .build();
     }
-
-
 }
 

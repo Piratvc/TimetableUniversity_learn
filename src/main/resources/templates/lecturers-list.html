@@ -47,6 +47,7 @@ tr:nth-child(even) {
                     <td th:text="${lecturer.id}"></td>
                 </div>
                 <td th:text="${lecturer.user}"></td>
+                <td><a th:href="@{records/lecturer-{id}/(id=${lecturer.id})}">Расписание</a></td>
                 <div sec:authorize="hasAuthority('ROLE_ADMIN')">
                     <td><a th:href="@{lecturer-update/{id}(id=${lecturer.id})}">Редактировать</a></td>
                     <td><a th:href="@{lecturer-delete/{id}(id=${lecturer.id})}">Удалить</a></td>

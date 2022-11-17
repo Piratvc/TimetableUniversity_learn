@@ -16,10 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//import javax.servlet.http.Cookie;
-//import javax.servlet.http.HttpServletResponse;
-
-
 @Controller
 @RequestMapping
 public class AuthenticationRestControllerV1 {
