@@ -15,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
     private final JwtTokenProvider jwtTokenProvider;
-    private static final String ADMIN_ENDPOINT = "/api/v1/admin/**";
     private static final String LOGIN_ENDPOINT = "/login";
 
     @Autowired
@@ -36,8 +35,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(LOGIN_ENDPOINT).permitAll()
                         .requestMatchers("/**").hasRole("USER")
-                        .requestMatchers(ADMIN_ENDPOINT).hasRole("ADMIN")
-                        .anyRequest().authenticated())
+                        .anyRequest()
+                        .authenticated())
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and()

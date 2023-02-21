@@ -1,4 +1,5 @@
 package com.application.TimetableUniversity.controller.security;
+
 import com.application.TimetableUniversity.dto.AuthenticationRequestDto;
 import com.application.TimetableUniversity.model.User;
 import com.application.TimetableUniversity.security.JwtUserDetailsService;
@@ -7,6 +8,7 @@ import com.application.TimetableUniversity.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +16,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -25,6 +28,9 @@ public class AuthenticationRestControllerV1 {
     private final JwtTokenProvider jwtTokenProvider;
 
     private final UserService userService;
+
+    @Value("${max.age.cookie}")
+    private int maxAgeCookie;
 
     @Autowired
     public AuthenticationRestControllerV1(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserService userService, JwtUserDetailsService jwtUserDetailsService) {
@@ -51,9 +57,9 @@ public class AuthenticationRestControllerV1 {
 
             Cookie bearerCookie = new Cookie("Bearer", token);
             bearerCookie.setHttpOnly(Boolean.TRUE);
-            bearerCookie.setMaxAge(100);
+            bearerCookie.setMaxAge(maxAgeCookie);
             response.addCookie(bearerCookie);
-            System.out.println("отправляем токен " + token);
+//            System.out.println("отправляем токен " + token);
             if (token != null) {
                 return "redirect:/records";
             }
